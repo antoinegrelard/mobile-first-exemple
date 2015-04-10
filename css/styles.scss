@@ -1,0 +1,273 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400,300,800);
+
+
+/*************\
+|  VARIABLES  |
+\*************/
+
+// FONTS
+$font_default : 'Open Sans', Arial, sans-serif;
+$font_logo : 'Helvetica', Arial, sans-serif;
+
+// COLORS
+$blue : #4cc6ad;
+$blue_dark : #3f474d;
+$blue_light : #75b0d0;
+$grey : #eaedf1;
+$red : #ff5f3d;
+
+// BREAKPOINTS
+$tablet : 640px;
+$desktop : 860px;
+
+
+/*************\
+|    MIXINS   |
+\*************/
+
+@mixin prefixr($property, $value...) {
+	-webkit-#{$property}: $value;
+	   -moz-#{$property}: $value;
+	    -ms-#{$property}: $value;
+	        #{$property}: $value;
+}
+
+@mixin media-query($media-query) {
+
+	@if $media-query == tablet {
+	  @media only screen and (min-width:$tablet) { @content; }
+	}
+
+	@if $media-query == desktop {
+	  @media only screen and (min-width:$desktop) { @content; }
+	}
+
+}
+
+@mixin tablet {
+	@include media-query(tablet) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@include media-query(desktop) {
+		@content;
+	}
+}
+
+
+/*************\
+|  	 COMMON   |
+\*************/
+
+* {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	font-family: $font-default;
+	font-weight: 400;
+	font-size: 16px;
+}
+
+figure {
+	margin: 0;
+	position: relative;
+}
+
+.clear:before,
+.clear:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.container {
+	padding: 0 5%;
+}
+
+// picture markup alternative
+.images_wrapper img,
+.images_wrapper .media span {
+	width: 100%;
+}
+
+.media {
+	display: block;
+
+	span {
+		display: none;
+	}
+
+}
+
+// common figure caption styles
+.caption {
+	text-align: center;
+	color: black;
+
+	@include tablet {
+		color: white;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include prefixr(transform, translateY(-50%) translateX(-50%));
+	}
+
+	h1 {
+		font-family: $font_logo;
+		font-size: 1.5625em;
+		font-weight: initial;
+
+		span {
+			font-weight: bold;
+		}
+
+	}
+
+	h2 {
+		font-size: 1.125em;
+		font-weight: 300;
+	}
+
+	.tooltip {
+		background: $red;
+		color: white;
+		display: table;
+		width: 80%;
+		margin: 0 auto;
+		text-decoration: none;
+
+		p,
+		.chevron_wrapper {
+			display: table-cell;
+			vertical-align: middle;
+		}
+
+		p {
+			font-weight: 300;
+			margin: 0;
+			padding: 1em;
+		}
+
+		.chevron_wrapper {
+			border-left: 1px solid rgba(255,255,255,.2);
+			width: 20%;
+		}
+	}
+}
+
+/*************\
+|  	 HEADER   |
+\*************/
+
+header {
+	border-top: 2px solid $blue;
+	text-align: center;
+
+	h1 {
+		font-family: $font_logo;
+		font-weight: 300;
+		font-size: 1.25em; // 20px
+
+		span {
+			font-weight: bold;
+			color: $blue_light;
+		}
+
+	}
+
+}
+
+
+/*************\
+|  	  HERO    |
+\*************/
+
+.hero_video-link {
+	display: table;
+	margin: 0 auto;
+	margin-top: 1em;
+	text-decoration: none;
+	color: black;
+
+	p,
+	button {
+		display: table-cell;
+		vertical-align: middle;
+	}
+
+	small {
+		font-size: .75em;
+		font-weight: 300;
+		font-style: italic;
+	}
+
+	p {
+		font-weight: 300;
+		font-style: italic;
+		padding: 0 10px;
+	}
+
+	.button {
+		font-size: .75em;
+		padding: 0;
+		margin: 0;
+		border: 2px solid black;
+		background: transparent;
+		border-radius: 50%;
+		width: 3em;
+		height: 3em;
+		line-height: 3em;
+
+		&:before {
+			padding-left: 2px;
+		}
+
+	}
+
+
+}
+
+
+/*************\
+|  	 SKILLS   |
+\*************/
+.skills {
+	background: $grey;
+	color: $blue_dark;
+	margin-top: 20px;
+	padding-top: 20px;
+	text-align: center;
+
+	.desc {
+		font-size: 1.25em;
+	}
+
+	.skills_list {
+		list-style: none;
+		margin: 0;
+		padding: 1em 0;
+
+		.skills_item {
+			margin: 2em 0;
+
+			figure {
+
+				img {
+					margin-bottom: 10px;
+				}
+
+				figcaption {
+					font-size: 1.25em;
+				}
+
+			}
+
+		}
+
+	}
+
+}
