@@ -70,6 +70,8 @@ body {
 	font-family: $font-default;
 	font-weight: 400;
 	font-size: 16px;
+	max-width: 1600px;
+	margin: 0 auto;
 }
 
 figure {
@@ -87,6 +89,10 @@ figure {
 .container {
 	padding: 0 5%;
 	@include prefixr(box-sizing, border-box);
+
+	@include tablet {
+		padding: 0 15%;
+	}
 }
 
 // picture markup alternative
@@ -168,6 +174,15 @@ figure {
 		font-size: 1.5625em;
 		font-weight: initial;
 
+		@include tablet {
+			font-size: 2.875em;
+			margin: 0;
+		}
+
+		@include desktop {
+			font-size: 4.5em;
+		}
+
 		span {
 			font-weight: bold;
 		}
@@ -177,6 +192,29 @@ figure {
 	h2 {
 		font-size: 1.125em;
 		font-weight: 300;
+
+		@include tablet {
+			font-size: 1.4375em;
+			margin: 0;
+			margin-bottom: 1em;
+			letter-spacing: 3px;
+		}
+
+		@include desktop {
+			font-size: 2.25em;
+		}
+	}
+
+	.desc {
+
+		p {
+
+			@include desktop {
+				font-size: 1.375em;
+			}
+
+		}
+
 	}
 
 	p {
@@ -191,13 +229,11 @@ figure {
 		background: $red;
 		color: white;
 		display: table;
-		width: 80%;
 		margin: 0 auto;
 		text-decoration: none;
 		position: relative;
 
 		@include tablet {
-			width: 50%;
 
 			&:before {
 				content: "";
@@ -224,6 +260,10 @@ figure {
 			font-weight: 300;
 			margin: 0;
 			padding: 1em;
+
+			@include desktop {
+				font-size: 1.375em;
+			}
 		}
 
 		.chevron_wrapper {
@@ -241,10 +281,22 @@ header {
 	border-top: 2px solid $blue;
 	text-align: center;
 
+	@include tablet {
+		text-align: left;
+	}
+
 	h1 {
 		font-family: $font_logo;
 		font-weight: 300;
 		font-size: 1.25em; // 20px
+
+		@include tablet {
+			font-size: 1.625em; // 26px
+		}
+
+		@include desktop {
+			font-size: 2.25em; // 36px;
+		}
 
 		span {
 			font-weight: bold;
@@ -260,6 +312,22 @@ header {
 |  	  HERO    |
 \*************/
 
+.hero_wrapper {
+
+	.images_wrapper {
+
+		@include tablet {
+
+			&:after {
+				background: url(../images/border_grey.png);
+			}
+
+		}
+
+	}
+
+}
+
 .hero_video-link {
 	display: table;
 	margin: 0 auto;
@@ -272,7 +340,8 @@ header {
 	}
 
 	p,
-	button {
+	button,
+	small {
 		display: table-cell;
 		vertical-align: middle;
 	}
@@ -281,12 +350,20 @@ header {
 		font-size: .75em;
 		font-weight: 300;
 		font-style: italic;
+
+		@include desktop {
+			font-size: .875em;
+		}
 	}
 
 	p {
 		font-weight: 300;
 		font-style: italic;
 		padding: 0 10px;
+
+		@include desktop {
+			font-size: 1.25em;
+		}
 	}
 
 	.button {
@@ -324,8 +401,22 @@ header {
 	padding-top: 20px;
 	text-align: center;
 
+	@include tablet {
+		margin-top: 0;
+	}
+
+	@include desktop {
+		padding-top: 50px;
+		padding-bottom: 50px;
+	}
+
+	.desc_wrapper {
+		margin: 1em 0;
+	}
+
 	.desc {
 		font-size: 1.25em;
+		margin: 0;
 	}
 
 	.skills_list {
@@ -336,16 +427,58 @@ header {
 		.skills_item {
 			margin: 2em 0;
 
+			@include tablet {
+				float: left;
+				width: 23.3333334%;
+				margin: 2em 5%;
+			}
+
 			figure {
 
 				img {
 					margin-bottom: 10px;
+
+					@include tablet {
+						width: 100%;
+					}
+
+					@include desktop {
+						width: 70%;
+					}
 				}
 
 				figcaption {
 					font-size: 1.25em;
 				}
 
+			}
+
+		}
+
+	}
+
+}
+
+
+/**************\
+|  	  ABOUT    |
+\**************/
+.about {
+
+	.images_wrapper {
+
+		@include tablet {
+
+			.w640 {
+				padding-top: 35%;
+			}
+
+		}
+
+		@include desktop {
+
+			.w860 {
+				padding-top: 35%;
 			}
 
 		}
@@ -363,6 +496,11 @@ footer {
 	background: $grey;
 	text-align: center;
 
+	@include tablet {
+		background: #fff;
+		position: relative;
+	}
+
 	ul {
 		list-style: none;
 		margin: 0;
@@ -374,6 +512,27 @@ footer {
 
 		li {
 			margin: 10px 0;
+
+			@include tablet {
+				display: inline-block;
+				margin: 10px 2%;
+			}
+
+			@include desktop {
+				margin: 10px 1%;
+
+				&:after {
+					content:'\2022';
+					color: #444;
+					position: relative;
+					right: -15px;
+				}
+
+				&:last-child:after {
+					content: none;
+				}
+
+			}
 
 			a {
 				color: $blue_dark;
@@ -387,10 +546,24 @@ footer {
 
 	.social_list {
 
+		@include tablet {
+			position: absolute;
+			right: 5%;
+			top: 50%;
+			@include prefixr(transform, translateY(-50%));
+		}
+
 		li {
 			float: left;
 			width: 50%;
 			height: 50px;
+
+			@include tablet {
+				width: 30px;
+				height: 30px;
+				border-radius: 50%;
+				margin: 0 5px;
+			}
 
 			a {
 				color: white;
