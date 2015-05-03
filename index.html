@@ -2,15 +2,20 @@
 <head>
 	<title>Mobile first template design</title>
 	<meta name="viewport" content="initial-scale=1">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
-	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.min.css">
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<script type="text/javascript" href="js/scripts.js"></script>
+	<!-- <script type="text/javascript" src="js/libs/modernizr-latest.js"></script> -->
+	<script type="text/javascript" src="js/scripts.js"></script>
 </head>
 <body>
 	<header class="container">
 		<h1><span>lorem</span>.ipsum</h1>
 	</header>
+	<section id="popup">
+		<button id="close-button"><i class="fa fa-times"></i></button>
+		<div id="player"></div>
+	</section>
 	<section class="hero">
 		<figure class="hero_wrapper">
 			<div class="images_wrapper">
@@ -29,7 +34,7 @@
 						<i class="fa fa-chevron-right"></i>
 					</div>
 				</a>
-				<a href="" class="hero_video-link">
+				<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="hero_video-link video-button" data-video="dQw4w9WgXcQ">
 					<small>/eu</small>
 					<p>Sed legendos ?</p>
 					<i class="fa fa-play button"></i>
